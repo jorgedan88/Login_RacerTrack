@@ -36,10 +36,10 @@ public class MenuUpdatePriceViewModel
     [Required(ErrorMessage = "Debe ingresar el año de fabricacion")]
 
     public DateTime VehiculoFabricacion { get; set; }
-    public int VehiculoCosto {get; set;}
+    public int VehiculoCosto { get; set; }
     public int Cantidad { get; set; }
-    public int Instruccion {get ; set;}
-    public decimal Total  {get ; set;}
+    public int Instruccion { get; set; }
+    public decimal Total { get; set; }
 
 
 }
