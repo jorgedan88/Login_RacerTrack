@@ -52,9 +52,11 @@ public class VehiculoService : IVehiculoService
     //     throw new NotImplementedException();
     // }
 
+    //GET by Id
     public Vehiculo? GetById(int id)
     {
         var vehiculo = _context.Vehiculo
+        //var vehiculo = GetQuery()
             .FirstOrDefault(m => m.VehiculoId == id);
         return vehiculo;
     }

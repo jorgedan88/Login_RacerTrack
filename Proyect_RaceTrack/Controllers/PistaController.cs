@@ -84,7 +84,9 @@ namespace Proyect_RaceTrack.Controllers
             //ModelState.Remove("Hangars"); No olvidar borrar esta validacion al realizar la relacion MaM
             if (ModelState.IsValid)
             {
+                //var cocheras = _cocheraService.GetAll().Where(x => pistaView.Cocheras.Contains(x.CocheraId)).ToList();
                 // var hangars = _context.Hangar.Where(x=> pistaView.HangarIds.Contains(x.HangarId)).ToList();
+
 
                 var pista = new Pista
                 {
@@ -93,7 +95,7 @@ namespace Proyect_RaceTrack.Controllers
                     PistaMaterial = pistaView.PistaMaterial,
                     PistaIluminacion = pistaView.PistaIluminacion,
                     PistaAprovisionamiento = pistaView.PistaAprovisionamiento,
-                    //Cocheras = pistaView.CocheraIds;
+                    Cocheras = pistaView.Cocheras,
                     // Hangars = hangars
                 };
 

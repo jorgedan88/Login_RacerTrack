@@ -71,7 +71,7 @@ namespace Proyect_RaceTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("VehiculoNombre,VehiculoApellido,VehiculoMatricula,VehiculoFabricacion, VehiculoTipo")] VehiculoCreateViewModel vehiculoView)
+        public IActionResult Create([Bind("VehiculoNombre,VehiculoApellido,VehiculoMatricula,VehiculoFabricacion, VehiculoTipo, VehiculoCosto")] VehiculoCreateViewModel vehiculoView)
         {
             if (ModelState.IsValid)
             {
@@ -82,6 +82,7 @@ namespace Proyect_RaceTrack.Controllers
                     VehiculoMatricula = vehiculoView.VehiculoMatricula,
                     VehiculoFabricacion = vehiculoView.VehiculoFabricacion,
                     VehiculoTipo = vehiculoView.VehiculoTipo,
+                    VehiculoCosto = vehiculoView.VehiculoCosto
                 };
 
                 _vehiculoService.Create(vehiculo);
@@ -111,7 +112,7 @@ namespace Proyect_RaceTrack.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("VehiculoId,VehiculoNombre,VehiculoApellido,VehiculoMatricula,VehiculoFabricacion, VehiculoTipo")] Vehiculo vehiculo)
+        public IActionResult Edit(int id, [Bind("VehiculoId,VehiculoNombre,VehiculoApellido,VehiculoMatricula,VehiculoFabricacion, VehiculoTipo, VehiculoCosto")] Vehiculo vehiculo)
         {
             if (id != vehiculo.VehiculoId)
             {
@@ -212,7 +213,7 @@ namespace Proyect_RaceTrack.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult UpdatePrice(MenuUpdatePriceViewModel model)
-        {
+        {//Analisar desde aca por el null de vehiculo
             var vehiculo = _vehiculoService.GetById(model.VehiculoId);
             if (vehiculo == null)
             {
@@ -222,7 +223,6 @@ namespace Proyect_RaceTrack.Controllers
             {
                 vehiculo.VehiculoCosto = (model.Cantidad * vehiculo.VehiculoCosto) + model.Instruccion;
                 _vehiculoService.Update(vehiculo); 
-
             }
 
             return RedirectToAction("Index");

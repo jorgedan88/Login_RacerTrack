@@ -42,5 +42,7 @@ namespace Proyect_RaceTrack.ViewModels.VehiculoViewModels
 
         public DateTime VehiculoFabricacion { get; set; }
 
+        public int VehiculoCosto { get; set; }
+
     }
 }
